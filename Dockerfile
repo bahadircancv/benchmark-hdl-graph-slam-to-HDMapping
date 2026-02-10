@@ -31,6 +31,17 @@ WORKDIR /ros_ws
 
 COPY ./src ./src
 
+# ARM64: strip x86-only SSE flags from the mounted source tree
+RUN grep -RIl -- "-msse" src | xargs -r sed -i \
+  's/-msse4\.2//g; s/-msse4\.1//g; s/-msse4//g; s/-msse3//g; s/-msse2//g; s/-msse//g' || true
+
+# Hard fail if any remain
+RUN if grep -RIn -- "-msse" src >/dev/null; then \
+  echo "ERROR: SSE flags still present:"; \
+  grep -RIn -- "-msse" src | head -n 50; \
+  exit 1; \
+fi
+
 RUN source /opt/ros/noetic/setup.bash && \
     catkin_make
 
