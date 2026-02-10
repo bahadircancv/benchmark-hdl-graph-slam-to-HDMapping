@@ -1,0 +1,12 @@
+[submodule "src/hdl_graph_slam"]
+	path = src/hdl_graph_slam
+	url = https://github.com/bahadircancv/hdl_graph_slam.git
+[submodule "src/fast_gicp"]
+	path = src/fast_gicp
+	url = https://github.com/SMRT-AIST/fast_gicp.git
+[submodule "src/ndt_omp"]
+	path = src/ndt_omp
+	url = https://github.com/koide3/ndt_omp.git
+[submodule "src/hdl-graph-slam-to-hdmapping/src/3rdparty/LASzip"]
+	path = src/hdl-graph-slam-to-hdmapping/src/3rdparty/LASzip
+	url = https://github.com/LASzip/LASzip.git
